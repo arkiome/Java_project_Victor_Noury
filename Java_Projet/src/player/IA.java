@@ -6,9 +6,9 @@ import game.Plateau;
 
 public class IA extends Player{
 	
-	public IA(Plateau board ,String pseudo, Color color) {
+	public IA(Plateau board , Color color) {
 		this.board = board ;
-		this.pseudo = pseudo ;
+		this.pseudo = "IA" ;
 		this.color = color ;
 	}
 }

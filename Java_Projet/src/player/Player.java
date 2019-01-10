@@ -10,7 +10,9 @@ public abstract class Player {
 //	public int tourDeJeux ;
 	public Plateau board ;
 	
-	
+	public String Lirepseudo() {
+		return(pseudo);
 
+	}
 }
 
