@@ -1,4 +1,4 @@
-import game.Plateau;
+import game.dominos.Plateau;
 import player.Player;
 
 public class Score {

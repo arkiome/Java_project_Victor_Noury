@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Scanner;
 
 import game.dominos.Domino;
@@ -11,10 +12,24 @@ import game.dominos.DominoPart;
 
 public class TestNul {
 	static ArrayList<Domino> pioche;
+	static String test;
+	static int choix;
+	
 	@SuppressWarnings("null")
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
+		ArrayList<ArrayList<Integer>> listTest = new ArrayList<ArrayList<Integer>>();
+//		ArrayList<Domino> pioche = new ArrayList();
+		
+		test2(test(),listTest);
+		test2(test(),listTest);
+		test3(listTest).get(0);
+		test3(listTest).get(0);
+		
+		System.out.println(listTest.size());
+		System.out.println(test3(listTest).get(0));
+		/*
 		DominoPart dominopart1 = new DominoPart("test1", 1);
 		DominoPart dominopart2 = new DominoPart("test2", 2);
 		ArrayList<DominoPart> dominoParts = new ArrayList<DominoPart>(Arrays.asList(dominopart1,dominopart2));
@@ -33,10 +48,16 @@ public class TestNul {
 		domino = new Domino(dominoParts,3);
 		pioche.add(domino);
 		
+		Collections.sort(pioche);
+		
 		for (Domino domi : pioche) {
 			System.out.println(domi.returnNumero());
 		}
-		
+		test();
+		test2();
+		System.out.println(test);
+		*/
+////////////////////
 		/*
 		System.out.println("test concluant");
 		int a=0;
@@ -88,4 +109,18 @@ public class TestNul {
 	*/
 	}
 	
+	public static ArrayList<Integer> test() {
+		ArrayList<Integer> test = new ArrayList<Integer>();
+		test.add(1);
+		test.add(2);
+		return test;
+	}
+	
+	public static void test2(ArrayList<Integer> test,ArrayList<ArrayList<Integer>> listTest) {
+		listTest.add(test);
+	}
+	
+	public static ArrayList<Integer> test3(ArrayList<ArrayList<Integer>> listTest) {
+		return(listTest.get(0));
+	}
 }

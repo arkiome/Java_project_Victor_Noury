@@ -2,12 +2,13 @@ package player;
 
 import java.awt.Color;
 
-import game.Plateau;
+import game.dominos.Plateau;
 
 public class IA extends Player{
 	
 	public IA(Plateau board , Color color) {
-		this.board = board ;
+		super();
+		this.plateau = board ;
 		this.pseudo = "IA" ;
 		this.color = color ;
 	}

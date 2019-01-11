@@ -4,9 +4,25 @@ import java.util.Collections;
 import java.util.List;
 
 public class Domino implements Comparable<Domino>{
+	
 	private ArrayList<DominoPart> domino ;
 	private int numero ;
-	
+////////////////////////
+	public ArrayList<DominoPart> getDomino() {
+		return domino;
+	}
+	public void setDomino(ArrayList<DominoPart> domino) {
+		this.domino = domino;
+	}
+////////////////////////
+	public int getNumero() {
+		return numero;
+	}
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+
+//////////////////////////
     public int returnNumero() {
         return numero;
     }
@@ -16,11 +32,7 @@ public class Domino implements Comparable<Domino>{
 		this.domino = domino;
 		this.numero = numero;
 	}
-	
-	public void compare(ArrayList<Domino> piocheDomino) {
-		  Collections.sort(piocheDomino);
-	}
-	
+		
 	@Override
 	public int compareTo(Domino domino) {
 		// TODO Auto-generated method stub

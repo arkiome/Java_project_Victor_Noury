@@ -3,50 +3,55 @@ package game;
 import java.awt.Color;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+
+
 import java.util.Scanner;
 
 import game.dominos.Domino;
 import game.dominos.DominoPart;
 import game.dominos.TerrainType;
-import player.IA;
-import player.Player;
-import player.RealPlayer;
+
 
 
 public class Controleur<Terraintype> {
-	public ArrayList<Domino> piocheInit ;	
+	public static ArrayList<Domino> piocheInit ;	
 	public int numTour ;
-	public ArrayList<TerrainType> typeDeTerrain ;
+	static ArrayList<Case> typeCaseRedondant =new ArrayList<Case>(Arrays.asList(
+					new Case(new DominoPart("0",0 )),
+					new Case(new DominoPart("chateau",0))
+					//vide + implassable jusqu'en fin de partie
+					)); 
 	static menu menudeJeu; //mettre un array<menu> pour sauv plusieur partie 
 	
-	public void modificationPlayer() {
-// for (Player player ; listeJoueur)
-	}
 	
+	public void creerPiocheInit() {
+		creerPiocheInit(importerDomino());
+	}
 	public void innitialisationMenu() {
 		//determine nombre total de joueur ,attention choix avec console 
-		//ajout limite
-		Scanner scan = new Scanner(System.in);
-		System.out.println("nombre joueur? (humain) ");
-		int nbJoueurHumain= scan.nextInt();
-		System.out.println("nombre IA?");
-		int nbJoueurIA= scan.nextInt();
-		scan.close();
-		
-		//importation domino
-		ArrayList<String[]> piocheIntermédiaire=importerDomino();
-		creerPiocheInit(piocheIntermédiaire);
-		
+		//mettre ajout limite
+		int nbJoueur= nbJoueurViaConsole();
+		int nbIa= nbIaViaConsole();
 		//creer un menu de jeux
-		menudeJeu = new menu(nbJoueurHumain, nbJoueurIA ,piocheInit);
+		menudeJeu = new menu(nbJoueur, nbIa ,piocheInit);
 	}
-	
-	
-	public ArrayList<String[]> importerDomino() {
+		
+	public int nbJoueurViaConsole() {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("nombre joueur?");
+		int nbJoueur= scan.nextInt();
+		scan.close();
+		return nbJoueur;
+	}
+	public int nbIaViaConsole() {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("nombre IA?");
+		int nbIA= scan.nextInt();
+		scan.close();
+		return nbIA;
+	}	
+	static ArrayList<String[]> importerDomino() {
 		Scanner scanner = null;
 		String[] elements = null ;
 		ArrayList<String[]> allInfoDomino ;
@@ -69,8 +74,8 @@ public class Controleur<Terraintype> {
 		return (allInfoDomino);
 	}	
 		
-	
-	public void creerPiocheInit(ArrayList<String[]> allInfoDomino) {
+	//creer
+	static void creerPiocheInit(ArrayList<String[]> allInfoDomino) {
 		Domino domino ;
 		for (String[] info1Domino : allInfoDomino) {
 			
@@ -89,12 +94,14 @@ public class Controleur<Terraintype> {
 		//													|--> String + nb couronne
 		}
 	}
-	public void jouerpartie(menu menu) {
+	public void commencerpartie(menu menu) {
 		//1er tour
+		
 		menu.mélangerJoueur();
 		
 		
 		//	prendre les 3/4*2 premiers dominos et les trier+les mettre de cotés :
+		
 		//	menu.jouer la manche 	
 		//		1er tour 
 		//		(tous les joueur) [choisir un domino parmi les restants de la premiere pile selon odre (hazard)]
@@ -104,10 +111,11 @@ public class Controleur<Terraintype> {
 		//				(tous les joueur)[choisir position du domino +
 		//								  mettre domino selon position +
 		//								  choisir un domino sur liste suivante]
+		//		
 		//		prendre les 3/4 premiers dominos suivant et les trier+les mettre de cotés 
 		//		---
 		//		dernier tour (tous les joueur) : le placer sur son board
-
+//
 	}
 
 }

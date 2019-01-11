@@ -3,9 +3,9 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
 
 import game.dominos.Domino;
+import game.dominos.Plateau;
 import player.IA;
 import player.Player;
 import player.RealPlayer;
@@ -23,7 +23,8 @@ public class menu {
 	public boolean Harmonie = false;
 	public boolean Empiredumilieu = false;
 	public boolean Dynastie = false;
-	public ArrayList<ArrayList<Domino>> piocheChoix;
+	public ArrayList<ArrayList<Domino>> petitePioche;
+	public int nbDominosTires;
 	
 	public menu(int nbDeHumain, int nbDeIA,ArrayList<Domino> piocheInit ) {
 		super();
@@ -31,6 +32,7 @@ public class menu {
 		this.nbDeIA = nbDeIA;
 		this.nbDeJoueur = nbDeHumain+nbDeIA;
 		creerPiocheJeux(piocheInit);
+		nbTirerdominos();
 		for (int i=0;i<nbDeHumain;i++) { 
 			ajoutJoueur (true);
 		}
@@ -77,21 +79,27 @@ public class menu {
 		}
 	}
 	
+	public void trierDomino(ArrayList<Domino> piocheDeJeux) {
+		Collections.sort(piocheDeJeux);
+	}
 	
 	public void mélangerJoueur() {
 	 	Collections.shuffle(listeJoueur);
 	}
 	
-	public int nbRetirerdominos(int nbDeJoueur) {	
+	public void nbTirerdominos() {	
 		if (nbDeJoueur == 3) {
-			return 3;
+			nbDominosTires=3;
 		}
 		else {
-			return 4;
+			nbDominosTires= 4;
 		}
 	}
 	
-	public ArrayList<Domino> retirerdominos(int nbDominoTirage) {
+	
+	
+	public ArrayList<Domino> Tirerdominos(int nbDominoTirage) {
+		
 		return piocheDeJeux;
 	}
 }
