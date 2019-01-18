@@ -14,6 +14,10 @@ public class Domino implements Comparable<Domino>{
 	public void setDomino(ArrayList<DominoPart> domino) {
 		this.domino = domino;
 	}
+	
+	public DominoPart getNiemDominoPart(int indice) {
+		return domino.get(indice);
+	}
 ////////////////////////
 	public int getNumero() {
 		return numero;
@@ -39,7 +43,15 @@ public class Domino implements Comparable<Domino>{
 		return (this.numero - domino.numero);
 	}
 	
-	
+	public void afficheConsoleDomino() {
+		
+		System.out.print("num :" + numero);
+		for (DominoPart i :domino){
+			System.out.print(" | " + i.terrainType + " nbcouronne: " + i.nbCouronne);	
+		}
+		System.out.println(" | ");
+		System.out.println("");
+	}
 
 }	
 	/*

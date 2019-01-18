@@ -14,11 +14,6 @@ public class RealPlayer extends Player{
 		super();
 		this.plateau=board;
 		this.color=couleur;
-		Scanner scan = new Scanner(System.in);
-		System.out.println("entrer votre pseudo");
-		String pseudo= scan.next();
-		scan.close();
-		this.pseudo=pseudo;
 	} 
 	
 	public void joueruncoup() {
